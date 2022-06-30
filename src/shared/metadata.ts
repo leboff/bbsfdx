@@ -2,11 +2,11 @@ import { createReadStream } from 'fs';
 import { promisify } from 'util';
 import { DeployResult, RetrieveResult } from './types';
 
-export async function deployMetadata(conn, zipFile, ux, messages): Promise<DeployResult> {
+export async function deployMetadata(conn, zipFile, ux, messages, deployOptions): Promise<DeployResult> {
     ux.log('Deploying');
 
     const zipStream = createReadStream(zipFile);
-    const result = await conn.metadata.deploy(zipStream, {});
+    const result = await conn.metadata.deploy(zipStream, deployOptions);
 
     let done = false;
 

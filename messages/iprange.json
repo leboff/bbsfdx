@@ -2,6 +2,7 @@
     "addCommandDescription": "Add to existing IP ranges",
     "sleeping": " sleeping for 5 seconds",
     "rangeFlagDescription": "the IP range(s) to add",
+    "ignoreErrorsFlagDescription": "ignore any errors and do not roll back deployment",
     "result": "Add IP range {0}"
   }
   

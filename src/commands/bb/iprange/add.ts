@@ -38,7 +38,12 @@ export default class Add extends SfdxCommand {
       description: messages.getMessage('rangeFlagDescription'),
       delimiter: ',',
       map: (val: string) => val.split(':')
-    })
+    }),
+    ignoreerrors: {
+      char: 'o',
+      description: messages.getMessage('ignoreErrorsFlagDescription'),
+      default: false
+    }
   };
 
   // Comment this out if your command does not require an org username
@@ -77,6 +82,7 @@ export default class Add extends SfdxCommand {
       networkAccess.ipRanges = [networkAccess.ipRanges];
     }
 
+    const { ignoreerrors } = this.flags;
     for (const range of this.flags.range) {
       const start: string = range[0];
       let end: string;
@@ -130,7 +136,10 @@ export default class Add extends SfdxCommand {
     const zipFile = join(tmpDir, 'uploadpkg.zip');
     await compressing.zip.compressDir(targetDir, zipFile);
 
-    const deployResult = await deployMetadata(conn, zipFile, this.ux, messages);
+    const deployOptions =  {
+      rollbackOnError: !ignoreerrors
+    }
+    const deployResult = await deployMetadata(conn, zipFile, this.ux, messages, deployOptions);
 
     this.ux.log(messages.getMessage('result').replace('{0}', deployResult.status));
 
