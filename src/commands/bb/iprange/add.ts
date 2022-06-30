@@ -39,11 +39,11 @@ export default class Add extends SfdxCommand {
       delimiter: ',',
       map: (val: string) => val.split(':')
     }),
-    ignoreerrors: {
+    ignoreerrors: flags.boolean({
       char: 'o',
       description: messages.getMessage('ignoreErrorsFlagDescription'),
       default: false
-    }
+    })
   };
 
   // Comment this out if your command does not require an org username

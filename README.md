@@ -22,7 +22,7 @@ $ npm install -g bbsfdx
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-bbsfdx/1.4.2 darwin-x64 node-v12.18.0
+bbsfdx/1.4.2 darwin-arm64 node-v18.1.0
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
@@ -31,7 +31,7 @@ USAGE
 <!-- usagestop -->
 <!-- commands -->
 * [`sfdx bb:devconsole:delete [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bbdevconsoledelete--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
-* [`sfdx bb:iprange:add [-r <array>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bbiprangeadd--r-array--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx bb:iprange:add [-r <array>] [-o] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bbiprangeadd--r-array--o--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bb:logs:delete [-a] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bblogsdelete--a--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bb:maxapi [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bbmaxapi--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx bb:test:parallel [-d] [-e] [-k] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-bbtestparallel--d--e--k--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
@@ -66,16 +66,19 @@ EXAMPLE
 
 _See code: [lib/commands/bb/devconsole/delete.js](https://github.com/keirbowden/bbsfdx/blob/v1.4.2/lib/commands/bb/devconsole/delete.js)_
 
-## `sfdx bb:iprange:add [-r <array>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+## `sfdx bb:iprange:add [-r <array>] [-o] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 Add to existing IP ranges
 
 ```
 USAGE
-  $ sfdx bb:iprange:add [-r <array>] [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  $ sfdx bb:iprange:add [-r <array>] [-o] [-u <string>] [--apiversion <string>] [--json] [--loglevel 
   trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 OPTIONS
+  -o, --ignoreerrors                                                                ignore any errors and do not roll
+                                                                                    back deployment
+
   -r, --range=range                                                                 the IP range(s) to add
 
   -u, --targetusername=targetusername                                               username or alias for the target
